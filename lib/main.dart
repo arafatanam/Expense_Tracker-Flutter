@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'widgets/expenses.dart';
 
+var kColorScheme = ColorScheme.fromSeed(
+  seedColor: const Color.fromARGB(255, 96, 59, 181),
+);
+
 void main() {
   runApp(
     MaterialApp(
-      theme: ThemeData().copyWith(
-        useMaterial3: true,
-        scaffoldBackgroundColor: Color.fromARGB(255, 220, 189, 252),
+      theme: ThemeData(colorScheme: kColorScheme, useMaterial3: true).copyWith(
+        appBarTheme: AppBarTheme(
+          backgroundColor: kColorScheme.onPrimaryContainer,
+          foregroundColor: kColorScheme.primaryContainer,
+        ),
       ),
       home: const Expenses(),
     ),
