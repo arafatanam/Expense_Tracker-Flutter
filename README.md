@@ -1,6 +1,6 @@
 # Expense Tracker
 
-A beautifully designed and feature-rich Flutter expense tracking application that helps you manage your finances with ease. This project was created as part of a Flutter learning journey to master cross-platform mobile app development.
+A Flutter expense-tracking app showcasing responsive UI, Material 3 theming, and cross-platform support (Android, iOS, Web, macOS, Linux, Windows). Designed as part of a Flutter learning journey.
 
 ## 📚 About the Course
 
@@ -25,10 +25,9 @@ The course provides comprehensive training in Flutter and Dart for building prof
 
 ### Prerequisites
 
-- Flutter SDK (version 3.0.0 or higher)
-- Dart SDK (version 3.0.0 or higher)
-- An IDE (Android Studio, VS Code, or IntelliJ IDEA)
-- An emulator or physical device for testing
+- Flutter SDK (version 3.9.0 or higher) and Dart
+- An IDE (Android Studio, Visual Studio Code, or IntelliJ IDEA)
+- A device or emulator for mobile testing or a browser for web
 
 ### Steps
 
@@ -50,62 +49,75 @@ The course provides comprehensive training in Flutter and Dart for building prof
    flutter run
    ```
 
+- Run in Chrome (web):
+
+```bash
+flutter run -d chrome
+```
+
+- Build release APK (Android):
+
+```bash
+flutter build apk --release
+```
+
+- Build iOS (macOS required for signing / build):
+
+```bash
+flutter build ios --release
+```
+
 ## Project Structure
 
 ```
 lib/
-├── main.dart                      # Application entry point
+├── main.dart                      # App entry point, themes and Material 3 seed color
 ├── models/
-│   └── expense.dart               # Expense model class
+│   └── expense.dart               # Expense model, category enum, bucket grouping
 └── widgets/
-    ├── expenses.dart              # Main expenses view and state management
-    ├── new_expense.dart           # Add new expense form
-    ├── chart/                      # Chart widgets for analytics
-    └── expenses_list/              # Expense list display components
+   ├── expenses.dart              # Main expenses screen and stateful logic
+   ├── new_expense.dart           # Modal sheet for creating new expenses
+   ├── chart/                      # Chart widgets for category-based visualization
+   └── expenses_list/              # Expense list and item UI
 ```
 
 ## Key Files
 
 ### main.dart
 
-- Application entry point
-- Sets up MaterialApp and initial theme configuration
+- App entry point and Material 3 theme definitions (light & dark seed colors)
 
 ### models/expense.dart
 
-- Defines the Expense data model
-- Contains expense properties and methods
+- Expense data model with UUID; category enum; `ExpenseBucket` for charting
 
 ### widgets/expenses.dart
 
-- Main widget managing overall expense state
-- Handles expense addition, deletion, and filtering logic
+- Stateful screen that manages expenses list, modal sheet for adding items, remove and undo operations, and responsive layout
 
 ### widgets/new_expense.dart
 
-- Form for adding new expenses
-- Handles expense input validation and submission
+- Input form for adding new expenses with validation and platform-adaptive dialogs
 
 ### widgets/chart/
 
-- Chart components for visualizing expense data
-- Displays expense analytics and summaries
+- Chart widgets and `ChartBar` for category-based visualizations
 
 ### widgets/expenses_list/
 
-- List components for displaying tracked expenses
-- Individual expense item rendering
+- Expense list and `ExpenseItem` with swipe-to-delete and animated transitions
 
 ## Dependencies
 
-This project uses the following Flutter packages:
+This project uses the following packages:
 
-- `flutter/material.dart` - For Material Design components
-- `intl` - For date and time formatting
+- `intl` — Date formatting and localization
+- `uuid` — ID generation for `Expense` instances
+- Flutter's built-in material, cupertino widgets, and core packages
 
 ## Development
 
-### Building for production
+### Build for production
 
 ```bash
 flutter build apk --release
